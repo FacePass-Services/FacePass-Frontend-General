@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, Checkbox } from "@nextui-org/react";
+import { Input, Button, Checkbox, Link } from "@nextui-org/react";
 import axios from "axios";
 import { IoCheckmarkCircle, IoCloseCircle } from "react-icons/io5";
-import { Link } from "@nextui-org/react";
 
 import useToken from "@/hooks/useToken";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
@@ -28,6 +27,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
   const [checked, setChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [signedIn, setSignedIn] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false); // State for login success
 
   type CheckedStates = {
     sub_a: boolean;
@@ -312,6 +312,10 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
         console.log("Response to setToken:", response);
         setToken(response);
         setSignedIn(true);
+        setLoginSuccess(true); // Set login success to true
+        setTimeout(() => {
+          window.location.href = "/"; // Redirect to home page after 3 seconds
+        }, 3000);
       } catch (error) {
         console.error("Login error:", error);
       }
@@ -350,7 +354,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
           )}
           <Button type="submit">{emailEntered ? "Sign In" : "Continue"}</Button>
           <div className="w-full VStack items-center ">
-            <Link className=" opacity-25 underline" href="/sign-up">
+            <Link className="opacity-25 underline" href="/sign-up">
               Create FacePass account now
             </Link>
           </div>
@@ -375,6 +379,11 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
             </div>
           </>
         )
+      )}
+      {loginSuccess && (
+        <div className="success-message">
+          Logged in successfully! Redirecting...
+        </div>
       )}
     </>
   );
