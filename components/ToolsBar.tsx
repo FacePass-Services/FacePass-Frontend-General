@@ -51,7 +51,7 @@ export default function App() {
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent justify="start">
-        <Link href="/" className="font-semibold cursor-pointer text-2xl">FacePass</Link>
+        <Link href="/" className="font-semibold cursor-pointer text-2xl dark:text-white text-black">FacePass</Link>
         <NavbarContent className="hidden sm:flex gap-7 HStack items-center justify-center">
           <NavbarItem>
             <Link color="foreground" href="/">
@@ -122,7 +122,7 @@ export default function App() {
           {clientSide && (
             <>
               <NavbarItem className="hidden lg:flex">
-                <Link href="/sign-in">Sign In</Link>
+                <Link href="/sign-in" className="text-black dark:text-white hover:opacity-75">Sign In</Link>
               </NavbarItem>
               {isMenuOpen ? (
                 <NavbarItem></NavbarItem>
@@ -147,25 +147,25 @@ export default function App() {
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         className="sm:hidden"
       />
-      <NavbarMenu>
+      <NavbarMenu className="">
         <NavbarMenuItem>
-          <Link className="w-full" size="lg" href="/">
+          <Link className="w-full text-black dark:text-white" size="lg" href="/">
             Home
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link className="w-full" size="lg" href="/how">
+          <Link className="w-full text-black dark:text-white" size="lg" href="/how">
             How to use
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link className="w-full" size="lg" href="/support">
+          <Link className="w-full text-black dark:text-white" size="lg" href="/support">
             Support
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem className="mt-10">
           <Link
-            className="w-full text-white opacity-50 cursor-not-allowed"
+            className="w-full text-black dark:text-white opacity-50 cursor-not-allowed"
             size="sm"
           >
             FacePass Account
@@ -175,17 +175,17 @@ export default function App() {
         {isLoggedIn ? (
           <>
             <NavbarMenuItem>
-              <Link className="w-full" size="lg" href="/support">
+              <Link className="w-full text-black dark:text-white" size="lg" href="/support">
                 My profile
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link className="w-full" size="lg" href="/support">
+              <Link className="w-full text-black dark:text-white" size="lg" href="/support">
                 Settings
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link className="w-full" color="danger" size="lg" href="/" onClick={logout}>
+              <Link className="w-full text-black dark:text-white" color="danger" size="lg" href="/" onClick={logout}>
                 Sign Out
               </Link>
             </NavbarMenuItem>
@@ -193,7 +193,7 @@ export default function App() {
         ) : (
           <>
             <NavbarItem className=" cursor-pointer">
-                <Link href="/sign-in">Sign In</Link>
+                <Link href="/sign-in" className="text-black dark:text-white">Sign In</Link>
               </NavbarItem>
            
           </>
