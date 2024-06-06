@@ -327,8 +327,9 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
     <>
       {!signedIn ? (
         <form onSubmit={handleSubmit} className="VStack gap-5 w-3/12">
-          <div className="flex w-full bg-red-500 rounded-2xl shadow-md flex-wrap md:flex-nowrap gap-4">
+          <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
             <Input
+              variant="bordered"
               type="email"
               label="Email"
               value={email}
@@ -347,9 +348,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
               />
             </div>
           )}
-          <Button type="submit">
-            {emailEntered ? "Sign In" : "Continue"}
-          </Button>
+          <Button type="submit">{emailEntered ? "Sign In" : "Continue"}</Button>
           <div className="w-full VStack items-center ">
             <Link className=" opacity-25 underline" href="/sign-up">
               Create FacePass account now
@@ -370,10 +369,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
                   </Tab>
                 )}
               </Tabs>
-              <Button
-                className="w-fit"
-                onClick={handleSignInAsDeveloper}
-              >
+              <Button className="w-fit" onClick={handleSignInAsDeveloper}>
                 Sign In as Developer
               </Button>
             </div>
