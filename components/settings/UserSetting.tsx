@@ -78,6 +78,7 @@ const UserSetting = () => {
         setEditedGender(data.user.gender);
         setEditedPhone(data.user.phone_number);
         setEditedEmail(data.user.email);
+        window.location.reload();
       } else {
         console.error("Error updating user:", data.message);
       }
