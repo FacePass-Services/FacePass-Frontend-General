@@ -91,7 +91,7 @@ export default function App() {
           <NavbarItem className="hidden lg:flex">
             <Dropdown placement="bottom-end">
               <DropdownTrigger>
-                <div className="flex items-center gap-3">
+                <div className="flex cursor-pointer items-center gap-3">
                   <Avatar
                     isBordered
                     as="button"
@@ -107,7 +107,7 @@ export default function App() {
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions" variant="flat">
                 <DropdownItem key="settings" href="/profile">Profile</DropdownItem>
-                <DropdownItem key="team_settings" href="/settinge">Settings</DropdownItem>
+                <DropdownItem key="team_settings" href="/settings">Settings</DropdownItem>
 
                 <DropdownItem key="help_and_feedback" href="/support">Report</DropdownItem>
                 <DropdownItem key="logout" color="danger" onClick={logout}>
@@ -175,12 +175,12 @@ export default function App() {
         {isLoggedIn ? (
           <>
             <NavbarMenuItem>
-              <Link className="w-full text-black dark:text-white" size="lg" href="/support">
+              <Link className="w-full text-black dark:text-white" size="lg" href="/profile">
                 My profile
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link className="w-full text-black dark:text-white" size="lg" href="/support">
+              <Link className="w-full text-black dark:text-white" size="lg" href="/settings">
                 Settings
               </Link>
             </NavbarMenuItem>
