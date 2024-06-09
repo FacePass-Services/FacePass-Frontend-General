@@ -80,7 +80,7 @@ export default function App() {
   };
 
   return (
-    <main className="VStack min-h-screen items-center ">
+    <main className="VStack min-h-screen items-center pb-10 w-10/12">
       <div className="VStack gap-5 items-center pt-10">
         <p className="font-semibold text-3xl">Create Your FacePass Account</p>
         <p>One FacePass account is all you need to access all services.</p>
@@ -136,7 +136,7 @@ export default function App() {
             />
           </div>
           <div className="HSection-break"></div>
-          <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+          <div className="flex w-full flex-wrap md:flex-nowrap justify-end gap-4">
             <Input
               variant="bordered"
               type="email"
