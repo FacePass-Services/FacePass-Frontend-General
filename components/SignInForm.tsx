@@ -330,7 +330,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
   return (
     <>
       {!signedIn ? (
-        <form onSubmit={handleSubmit} className="VStack gap-5 w-3/12">
+        <form onSubmit={handleSubmit} className="VStack gap-5 w-full">
           <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
             <Input
               variant="bordered"
