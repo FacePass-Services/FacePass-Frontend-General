@@ -8,7 +8,7 @@ export default function App() {
 
 
   return (
-    <section className="VStack w-full h-full items-center justify-center gap-5 min-h-screen">
+    <section className="VStack lg:w-full h-full text-center items-center pt-12 md:pt-0 w-10/12 md:justify-center gap-5 min-h-screen">
       <p className="font-semibold text-3xl">Sign In to FacePass Account</p>
       <p>Manage your FacePass account</p> <SignInForm />
     </section>
