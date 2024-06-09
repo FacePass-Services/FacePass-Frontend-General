@@ -57,28 +57,30 @@ export default function App() {
 
   return (
     <main className="xl:pl-10 bg-secondary dark:bg-secondary-dark xl:pr-10 VStack min-h-screen overflow-y-hidden w-full items-center">
-     {selectedItem && isMobile ? (
+      {selectedItem && isMobile ? (
         <div
-        className=" fixed pl-7 pt-10  left-0 HStack items-center  text-blue-500 gap-1 text-base font-normal cursor-pointer"
-        onClick={handleBackClick}
+          className=" fixed pl-7 pt-1  left-0 HStack items-center  text-blue-500 gap-1 text-base font-normal cursor-pointer"
+          onClick={handleBackClick}
         >
           <GoChevronLeft />
           <p>Settings</p>
         </div>
       ) : (
         <Link
-        
           href="/"
-          className=" fixed pl-7 pt-10  left-0 HStack items-center  text-blue-500 gap-1 text-base font-normal cursor-pointer"
+          className=" fixed pl-7 pt-1  left-0 HStack items-center  text-blue-500 gap-1 text-base font-normal cursor-pointer"
         >
           <GoChevronLeft />
           <p>Home</p>
         </Link>
       )}
-      <div className="HStack items-center justify-center text-center w-full pl-7 pr-7 pt-10">
-      <p className="text-2xl  md:pl-0 w-full font-medium">
-          {selectedItem ? selectedItem.charAt(0).toUpperCase() + selectedItem.slice(1) : "Settings"}
-        </p>      </div>
+      <div className="HStack items-center justify-center text-center w-full pl-7 pr-7 pt-1">
+        <p className="text-2xl  md:pl-0 w-full font-medium">
+          {selectedItem
+            ? selectedItem.charAt(0).toUpperCase() + selectedItem.slice(1)
+            : "Settings"}
+        </p>{" "}
+      </div>
 
       <div className="HStack justify-center w-full h-full pt-5 pb-5 pl-7 pr-7">
         <div
