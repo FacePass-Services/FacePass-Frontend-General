@@ -15,16 +15,16 @@ export default function App() {
         </p>
         <div className="relative w-full h-fit  rounded-lg lg:rounded-3xl overflow-hidden">
           <Image
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
             src={faceAuth}
             alt="FacePass"
           />
           <div className="absolute inset-0 flex text-white pt-2 pl-3 pr-3 lg:pt-7 lg:pl-7 lg:pr-7 z-10">
             <div className="w-6/12 h-full flex items-start">
-              <p className="font-medium text-base lg:text-xl">Face Authentication</p>
+              <p className="font-medium text-xs lg:text-xl">Face Authentication</p>
             </div>
             <div className="w-6/12 h-full flex items-center justify-center text-center ">
-              <p className="font-medium text-xl lg:text-4xl w-11/12">
+              <p className="font-medium text-md lg:text-4xl w-11/12">
                 Create your own password, so it’s never lost.
               </p>
             </div>
