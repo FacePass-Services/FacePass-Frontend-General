@@ -21,7 +21,7 @@ import { GoChevronDown } from "react-icons/go";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isLoggedIn,logout, username } = useToken();
+  const { isLoggedIn, logout, username } = useToken();
   const [clientSide, setClientSide] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -43,6 +43,11 @@ export default function App() {
   useEffect(() => {
     setClientSide(true);
   }, []);
+
+  const handleSignOut = () => {
+    logout();
+    window.location.href = "/";
+  };
 
   return (
     <Navbar
@@ -110,7 +115,7 @@ export default function App() {
                 <DropdownItem key="team_settings" href="/settings">Settings</DropdownItem>
 
                 <DropdownItem key="help_and_feedback" href="/support">Report</DropdownItem>
-                <DropdownItem key="logout" color="danger" onClick={logout}>
+                <DropdownItem key="logout" color="danger" onClick={handleSignOut}>
                   Sign Out
                 </DropdownItem>
               </DropdownMenu>
@@ -185,7 +190,7 @@ export default function App() {
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link className="w-full text-black dark:text-white" color="danger" size="lg" href="/" onClick={logout}>
+              <Link className="w-full text-black dark:text-white" color="danger" size="lg" href="/" onClick={handleSignOut}>
                 Sign Out
               </Link>
             </NavbarMenuItem>
