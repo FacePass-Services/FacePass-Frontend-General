@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   Input,
@@ -21,38 +21,12 @@ export default function App() {
   const [gender, setGender] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [verifyEmail, setVerifyEmail] = useState("");
-  const [isVerify, setIsVerify] = useState(false);
-  const [isVerifySend, setIsVerifySend] = useState(false);
-
-  const [countdown, setCountdown] = useState<number | null>(null);
 
   const router = useRouter(); // Initialize useRouter
 
   const formatDate = (date: any) => {
     return moment(date).format("MM/DD/YYYY");
   };
-
-  const verifyOn = () => {
-    setIsVerify(true);
-    setCountdown(15);
-    setIsVerifySend(true);
-  };
-
-  useEffect(() => {
-    if (countdown === 0) {
-      setCountdown(null);
-      setIsVerify(false);
-    }
-
-    if (countdown !== null) {
-      const timer = setInterval(() => {
-        setCountdown((prev) => (prev !== null ? prev - 1 : prev));
-      }, 1000);
-
-      return () => clearInterval(timer);
-    }
-  }, [countdown]);
 
   const signUp = async () => {
     try {
@@ -135,7 +109,7 @@ export default function App() {
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
-          <div className="HSection-break"></div>
+
           <div className="flex w-full flex-wrap md:flex-nowrap justify-end gap-4">
             <Input
               variant="bordered"
@@ -145,28 +119,7 @@ export default function App() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button
-              size="lg"
-              color="success"
-              onClick={verifyOn}
-              className="text-white"
-              isDisabled={isVerify} // Disable the button if isVerify is true
-            >
-              {isVerify ? `Wait ${countdown}s` : "Verify"}
-            </Button>
           </div>
-          {(isVerifySend || countdown === 0) && (
-            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-              <Input
-                variant="bordered"
-                type="text"
-                label="Verify code"
-                description="Only use for verify email"
-                value={verifyEmail}
-                onChange={(e) => setVerifyEmail(e.target.value)}
-              />
-            </div>
-          )}
 
           <div className="Hsection-break"></div>
           <div className="w-full">
