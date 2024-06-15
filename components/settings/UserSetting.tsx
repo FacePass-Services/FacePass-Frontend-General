@@ -35,6 +35,7 @@ const UserSetting = () => {
     setEditedPhone(phoneNumber);
     setEditedEmail(email);
   }, [firstName, lastName, dateOfBirth, gender, phoneNumber, email]);
+  console.log(role);
 
   const profileImg =
     "https://static.vecteezy.com/system/resources/thumbnails/018/742/015/small_2x/minimal-profile-account-symbol-user-interface-theme-3d-icon-rendering-illustration-isolated-in-transparent-background-png.png";
@@ -96,7 +97,7 @@ const UserSetting = () => {
         {role === "user" && (
           <p className="text-base opacity-75">FacePass Account</p>
         )}
-        {role === "developer" && (
+        {(role === "dev_plus" || role === "dev_pro" || role === "dev_lite") && (
           <p className="text-base opacity-75">Developer Account</p>
         )}
       </div>
@@ -242,11 +243,9 @@ const UserSetting = () => {
                     <p>Phone Number</p>
                     <div className="gap-1 HStack opacity-75 items-center">
                       {isEditing ? (
-                          <div className="HStack opacity-25 items-center gap-1">
+                        <div className="HStack opacity-25 items-center gap-1">
                           {" "}
-                          <p className="">
-                            {phoneNumber}
-                          </p>
+                          <p className="">{phoneNumber}</p>
                           <IoLockClosed />
                         </div>
                       ) : (
@@ -263,13 +262,11 @@ const UserSetting = () => {
                     <p>Email Address</p>
                     <div className="gap-1 HStack opacity-75 items-center">
                       {isEditing ? (
-                           <div className="HStack opacity-25 items-center gap-1">
-                           {" "}
-                           <p className="">
-                             {email}
-                           </p>
-                           <IoLockClosed />
-                         </div>
+                        <div className="HStack opacity-25 items-center gap-1">
+                          {" "}
+                          <p className="">{email}</p>
+                          <IoLockClosed />
+                        </div>
                       ) : (
                         <>
                           <p>{email}</p>
@@ -281,9 +278,10 @@ const UserSetting = () => {
                 </li>
               </ul>
               {isEditing && (
- <p className="pt-2 opacity-25 text-xs pl-2">
- According to TF3949 Information cannot be change in 1.0 Beta 1b
-</p>
+                <p className="pt-2 opacity-25 text-xs pl-2">
+                  According to TF3949 Information cannot be change in 1.0 Beta
+                  1b
+                </p>
               )}
             </div>
           </section>
