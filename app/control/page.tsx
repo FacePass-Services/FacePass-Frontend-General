@@ -106,7 +106,8 @@ export default function App() {
           }`}
         >
           {!selectedProject ? (
-            <p>No platform selected </p>
+            <section className="VStack min-h-[90vh] w-full justify-center items-center opacity-75">
+            <p className="text-xl">No platform selected </p></section>
           ) : (
             <ProjectDetails project={selectedProject} />
           )}
