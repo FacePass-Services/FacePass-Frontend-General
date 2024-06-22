@@ -3,7 +3,6 @@ import { Input, Button, Checkbox, Link } from "@nextui-org/react";
 import axios from "axios";
 import { IoCheckmarkCircle, IoCloseCircle } from "react-icons/io5";
 import { useRouter } from "next/navigation";
-
 import useToken from "@/hooks/useToken";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
 import {
@@ -23,6 +22,7 @@ import {
   RadioGroup,
   Radio,
 } from "@nextui-org/react";
+
 type SignInFormProps = {
   isDeveloperPage?: boolean;
 };
@@ -38,6 +38,8 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
   const [checked, setChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [signedIn, setSignedIn] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [passcodeError, setPasscodeError] = useState("");
 
   type CheckedStates = {
     sub_a: boolean;
@@ -94,7 +96,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
                   <TableCell>
                     <IoCloseCircle className="text-red-500" />
                   </TableCell>
-                  <TableCell>Prof of Location</TableCell>
+                  <TableCell>Proof of Location</TableCell>
                 </TableRow>
                 <TableRow key="4">
                   <TableCell>
@@ -331,7 +333,11 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!emailEntered && email !== "") {
+    if (!emailEntered) {
+      if (!email) {
+        setEmailError("Please enter your email.");
+        return;
+      }
       const exists = await checkEmailExists(email);
       if (exists) {
         setEmailExists(true);
@@ -347,16 +353,18 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
         console.log("Response to setToken:", response);
         setToken(response);
         setSignedIn(true);
-       
       } catch (error) {
         console.error("Login error:", error);
+        setPasscodeError("Incorrect passcode. Please try again.");
       }
     }
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+    setEmailError("");
     setErrorMessage("");
+    setPasscodeError("");
   };
 
   return (
@@ -364,8 +372,8 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
       {!signedIn ? (
         <form onSubmit={handleSubmit} className="VStack gap-5 w-full">
           <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-            <Input            isRequired
-
+            <Input
+              isRequired
               variant="bordered"
               type="email"
               label="Email"
@@ -374,15 +382,17 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
               isDisabled={emailEntered}
             />
           </div>
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
+          {emailError && <div className="error-message text-red-500">{emailError}</div>}
+          {errorMessage && <div className="error-message text-red-500">{errorMessage}</div>}
           {emailEntered && emailExists && (
-            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+            <div className="VStack flex w-full flex-wrap md:flex-nowrap gap-4">
               <Input
                 type="password"
                 label="Passcode"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
               />
+              {passcodeError && <div className="error-message text-red-500">{passcodeError}</div>}
             </div>
           )}
           <Button type="submit">{emailEntered ? "Sign In" : "Continue"}</Button>
@@ -413,7 +423,6 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
           </>
         )
       )}
-   
 
       <Modal className=" w-96 h-96" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>

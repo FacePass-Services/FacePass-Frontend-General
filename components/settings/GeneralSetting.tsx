@@ -220,8 +220,8 @@ export default function General() {
                 </p>
               </ModalBody>
               <ModalFooter className="w-full justify-between">
-                <Button variant="light" onPress={onClose}>
-                  Close
+                <Button variant="light" className="text-blue-500" onPress={onClose}>
+                  Cancel
                 </Button>
                 <Button color="danger" onPress={onClose} onClick={deleteuser}>
                   Erase All FacePass Account
