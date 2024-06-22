@@ -66,7 +66,8 @@ export default function App() {
         <form onSubmit={handleSubmit} className="VStack gap-5">
           <div className="HStack gap-5">
             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-              <Input
+              <Input            isRequired
+
                 variant="bordered"
                 type="text"
                 label="First name"
@@ -75,7 +76,8 @@ export default function App() {
               />
             </div>
             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-              <Input
+              <Input            isRequired
+
                 variant="bordered"
                 type="text"
                 label="Last name"
@@ -84,7 +86,8 @@ export default function App() {
               />
             </div>
           </div>
-          <DatePicker
+          <DatePicker            isRequired
+
             variant="bordered"
             label="Birth date"
             value={birthDate}
@@ -94,7 +97,8 @@ export default function App() {
             }}
             className="w-full"
           />
-          <RadioGroup
+          <RadioGroup            isRequired
+
             label="Select your gender"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
@@ -104,7 +108,8 @@ export default function App() {
             <Radio value="female">Female</Radio>
           </RadioGroup>
           <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-            <Input
+            <Input            isRequired
+
               variant="bordered"
               type="number"
               label="Phone number"
@@ -113,7 +118,8 @@ export default function App() {
             />
           </div>
           <div className="flex w-full flex-wrap md:flex-nowrap justify-end gap-4">
-            <Input
+            <Input            isRequired
+
               variant="bordered"
               type="email"
               label="Email"

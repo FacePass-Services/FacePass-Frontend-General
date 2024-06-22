@@ -364,7 +364,8 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
       {!signedIn ? (
         <form onSubmit={handleSubmit} className="VStack gap-5 w-full">
           <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-            <Input
+            <Input            isRequired
+
               variant="bordered"
               type="email"
               label="Email"
