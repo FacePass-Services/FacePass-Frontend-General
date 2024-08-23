@@ -34,12 +34,11 @@ jobs:
         runs-on: ubuntu-latest
         env:
             DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-            ROOT_PATH: /home/action/facepass-frontend-general
         steps:
             - name: checkout
               uses: actions/checkout@v2
             - name: Copy file via ssh password
-              uses: appleboy/scp-action@v0.1.6
+              uses: appleboy/scp-action@v0.1.4
               with:
                   host: ${{ secrets.HOST_SERVER }}
                   username: ${{ secrets.HOST_USERNAME }}
