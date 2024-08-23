@@ -52,7 +52,7 @@ function useToken() {
   const getPhoneNumber = () => {
     if (typeof window !== 'undefined') {
       const tokenString = localStorage.getItem('token');
-      const userToken = JSON.parse(tokenString);
+      const userToken = JSON.parse(tokenString) ;
       return userToken?.user.phone_number;
     }
     return null;

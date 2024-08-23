@@ -32,7 +32,7 @@ const EmailForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="VStack gap-5 w-full">
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-        <Select label="Select a topic" value={selectedTopic} onChange={(value) => setSelectedTopic(value)}>
+        <Select label="Select a topic" value={selectedTopic} onChange={(value:any) => setSelectedTopic(value)}>
           {titles.map((title) => (
             <SelectItem key={title.value} value={title.value}>
               {title.label}

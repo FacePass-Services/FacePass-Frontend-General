@@ -5,6 +5,7 @@ import { IoCheckmarkCircle, IoCloseCircle } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import useToken from "@/hooks/useToken";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { BACKEND_URL } from "@/lib/config";
 import {
   Table,
   TableHeader,
@@ -237,7 +238,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
 
   const checkEmailExists = async (email: string) => {
     try {
-      const response = await axios.post("http://127.0.0.1:5000/check_email", {
+      const response = await axios.post(`${BACKEND_URL}/check_email`, {
         email,
       });
       return response.data.exists;
@@ -250,7 +251,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
   const sendPasscode = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/auth/send_passcode",
+        `${BACKEND_URL}/auth/send_passcode`,
         { email }
       );
       console.log("Passcode sent!", response.data);
@@ -263,7 +264,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
   const loginUser = async (credentials: any) => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/auth/login",
+        `${BACKEND_URL}/auth/login`,
         credentials,
         {
           headers: { "Content-Type": "application/json" },
@@ -287,7 +288,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
         let response;
         if (checkedStates.sub_a) {
           response = await axios.post(
-            "http://127.0.0.1:5000/auth/upgrade_dev_lite",
+            `${BACKEND_URL}/auth/upgrade_dev_lite`,
             {
               email,
             }
@@ -295,7 +296,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
           console.log("Role upgraded to 'dev_lite'");
         } else if (checkedStates.sub_b) {
           response = await axios.post(
-            "http://127.0.0.1:5000/auth/upgrade_dev_plus",
+            `${BACKEND_URL}/auth/upgrade_dev_plus`,
             {
               email,
             }
@@ -303,7 +304,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
           console.log("Role upgraded to 'dev_plus'");
         } else if (checkedStates.sub_c) {
           response = await axios.post(
-            "http://127.0.0.1:5000/auth/upgrade_dev_pro",
+            `${BACKEND_URL}/auth/upgrade_dev_pro`,
             {
               email,
             }

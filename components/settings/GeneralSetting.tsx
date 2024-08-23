@@ -5,6 +5,7 @@ import { CiEdit } from "react-icons/ci";
 import { MdDownloadDone } from "react-icons/md";
 import { IoLockClosed } from "react-icons/io5";
 import useToken from "@/hooks/useToken";
+import { BACKEND_URL } from "@/lib/config";
 import {
   Modal,
   ModalContent,
@@ -22,7 +23,7 @@ export default function General() {
 
   const deleteuser = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/user/delete_user", {
+      const response = await fetch(`${BACKEND_URL}/user/delete_user`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
