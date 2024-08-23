@@ -178,13 +178,12 @@ export default function App() {
             isRequired
             variant="bordered"
             label="Birth date"
-            value={convertDateToDateValue(birthDate)}
-            onChange={(date:any) => {
+            value={birthDate}
+            onChange={(date: any) => {
               setBirthDate(date);
               setFormattedBirthDate(date !== null ? formatDate(date) : null);
-            }}
-            className="w-full"
-          />
+            } }
+            className="w-full" disableAnimation={undefined} ref={undefined} color={undefined} size={undefined} radius={undefined} isDisabled={undefined} labelPlacement={undefined} fullWidth={undefined} createCalendar={undefined} startContent={undefined} endContent={undefined} inputRef={undefined}          />
           {birthDateError && (
             <p className="text-red-500 text-sm">{birthDateError}</p>
           )}
