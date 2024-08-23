@@ -5,6 +5,7 @@ import { Input, Button, DatePicker } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import moment from "moment";
+import { BACKEND_URL } from "@/lib/config";
 import {
   Modal,
   ModalContent,
@@ -42,7 +43,7 @@ export default function App() {
 
   const checkEmailExists = async (email: string) => {
     try {
-      const response = await axios.post("http://127.0.0.1:5000/check_email", {
+      const response = await axios.post(`${BACKEND_URL}/check_email`, {
         email,
       });
       return response.data.exists;
@@ -54,7 +55,7 @@ export default function App() {
 
   const signUp = async () => {
     try {
-      const response = await axios.post("http://127.0.0.1:5000/auth/register", {
+      const response = await axios.post(`${BACKEND_URL}/auth/register`, {
         first_name: firstName,
         last_name: lastName,
         date_of_birth: formattedBirthDate,
@@ -127,6 +128,10 @@ export default function App() {
     }
   };
 
+  function convertDateToDateValue(birthDate: Date | null): any {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <main className="VStack min-h-screen items-center pb-10 w-10/12">
       <div className="VStack gap-5 items-center pt-10">
@@ -174,13 +179,11 @@ export default function App() {
             variant="bordered"
             label="Birth date"
             value={birthDate}
-            onChange={(date) => {
+            onChange={(date: any) => {
               setBirthDate(date);
               setFormattedBirthDate(date !== null ? formatDate(date) : null);
-              setBirthDateError("");
-            }}
-            className="w-full"
-          />
+            } }
+            className="w-full" disableAnimation={undefined} ref={undefined} color={undefined} size={undefined} radius={undefined} isDisabled={undefined} labelPlacement={undefined} fullWidth={undefined} createCalendar={undefined} startContent={undefined} endContent={undefined} inputRef={undefined}          />
           {birthDateError && (
             <p className="text-red-500 text-sm">{birthDateError}</p>
           )}

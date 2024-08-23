@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { GoChevronRight } from "react-icons/go";
 import useToken from "@/hooks/useToken";
+import { BACKEND_URL } from "@/lib/config";
 
 interface Project {
   id: number;
@@ -22,7 +23,7 @@ export default function ProjectLists({
   const fetchProjects = useCallback(async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/user/get_project_list_by_user_id?user_id=${userId}`
+        `${BACKEND_URL}/user/get_project_list_by_user_id?user_id=${userId}`
       );
 
       if (!response.ok) {
